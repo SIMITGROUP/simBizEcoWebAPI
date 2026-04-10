@@ -40,8 +40,8 @@
                 "exec": [
                   "let body = {};",
                   "try { body = pm.response.json(); } catch (e) {}",
-                  "if (body && body.status === 'OK' && body.data && body.data.token) {",
-                  "  pm.environment.set('token', body.data.token);",
+                  "if (body && body.status === 'OK' && body.data && body.data.access_token) {",
+                  "  pm.environment.set('token', body.data.access_token);",
                   "}",
                   "pm.test('Token API returns status OK', function () {",
                   "  pm.expect(body.status).to.eql('OK');",
@@ -63,16 +63,17 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"uid\": \"{{uid}}\",\n  \"secret\": \"{{secret}}\",\n  \"organization_code\": \"{{organization_code}}\"\n}"
+              "raw": "{\n  \"grant_type\": \"client_credentials\",\n  \"client_id\": \"{{client_id}}\",\n  \"client_secret\": \"{{client_secret}}\",\n  \"organization_code\": \"{{organization_code}}\"\n}"
             },
             "url": {
-              "raw": "{{base_url}}/api/v3/token",
+              "raw": "{{base_url}}/api/v3/auth/token",
               "host": [
                 "{{base_url}}"
               ],
               "path": [
                 "api",
                 "v3",
+                "auth",
                 "token"
               ]
             }
@@ -429,14 +430,18 @@
   "variable": [
     {
       "key": "base_url",
-      "value": "https://herbal-simbiz-ben.happydev.simitgroup.com"
+      "value": ""
     },
     {
       "key": "uid",
       "value": "support"
     },
     {
-      "key": "secret",
+      "key": "client_id",
+      "value": ""
+    },
+    {
+      "key": "client_secret",
       "value": ""
     },
     {
