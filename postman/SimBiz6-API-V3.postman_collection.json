@@ -120,11 +120,26 @@
                 "business-partners"
               ],
               "query": [
-                { "key": "page", "value": "1" },
-                { "key": "per_page", "value": "20" },
-                { "key": "organization_code", "value": "{{organization_code}}" },
-                { "key": "updated_from", "value": "2026-01-01 00:00:00" },
-                { "key": "updated_to", "value": "2026-12-31 23:59:59" }
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "per_page",
+                  "value": "20"
+                },
+                {
+                  "key": "organization_code",
+                  "value": "{{organization_code}}"
+                },
+                {
+                  "key": "updated_from",
+                  "value": "2026-01-01 00:00:00"
+                },
+                {
+                  "key": "updated_to",
+                  "value": "2026-12-31 23:59:59"
+                }
               ]
             }
           }
@@ -170,11 +185,26 @@
                 "items"
               ],
               "query": [
-                { "key": "page", "value": "1" },
-                { "key": "per_page", "value": "20" },
-                { "key": "organization_code", "value": "{{organization_code}}" },
-                { "key": "updated_from", "value": "2026-01-01 00:00:00" },
-                { "key": "updated_to", "value": "2026-12-31 23:59:59" }
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "per_page",
+                  "value": "20"
+                },
+                {
+                  "key": "organization_code",
+                  "value": "{{organization_code}}"
+                },
+                {
+                  "key": "updated_from",
+                  "value": "2026-01-01 00:00:00"
+                },
+                {
+                  "key": "updated_to",
+                  "value": "2026-12-31 23:59:59"
+                }
               ]
             }
           }
@@ -220,11 +250,26 @@
                 "sales-orders"
               ],
               "query": [
-                { "key": "page", "value": "1" },
-                { "key": "per_page", "value": "20" },
-                { "key": "organization_code", "value": "{{organization_code}}" },
-                { "key": "updated_from", "value": "2026-01-01 00:00:00" },
-                { "key": "updated_to", "value": "2026-12-31 23:59:59" }
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "per_page",
+                  "value": "20"
+                },
+                {
+                  "key": "organization_code",
+                  "value": "{{organization_code}}"
+                },
+                {
+                  "key": "updated_from",
+                  "value": "2026-01-01 00:00:00"
+                },
+                {
+                  "key": "updated_to",
+                  "value": "2026-12-31 23:59:59"
+                }
               ]
             }
           }
@@ -269,11 +314,26 @@
                 "purchase-invoices"
               ],
               "query": [
-                { "key": "page", "value": "1" },
-                { "key": "per_page", "value": "20" },
-                { "key": "organization_code", "value": "{{organization_code}}" },
-                { "key": "updated_from", "value": "2026-01-01 00:00:00" },
-                { "key": "updated_to", "value": "2026-12-31 23:59:59" }
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "per_page",
+                  "value": "20"
+                },
+                {
+                  "key": "organization_code",
+                  "value": "{{organization_code}}"
+                },
+                {
+                  "key": "updated_from",
+                  "value": "2026-01-01 00:00:00"
+                },
+                {
+                  "key": "updated_to",
+                  "value": "2026-12-31 23:59:59"
+                }
               ]
             }
           }
@@ -300,57 +360,6 @@
       ]
     },
     {
-      "name": "Customer Service",
-      "item": [
-        {
-          "name": "List Support Tickets",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{base_url}}/api/v3/support/tickets?page=1&per_page=20&organization_code={{organization_code}}&updated_from=2026-01-01 00:00:00&updated_to=2026-12-31 23:59:59",
-              "host": [
-                "{{base_url}}"
-              ],
-              "path": [
-                "api",
-                "v3",
-                "support",
-                "tickets"
-              ],
-              "query": [
-                { "key": "page", "value": "1" },
-                { "key": "per_page", "value": "20" },
-                { "key": "organization_code", "value": "{{organization_code}}" },
-                { "key": "updated_from", "value": "2026-01-01 00:00:00" },
-                { "key": "updated_to", "value": "2026-12-31 23:59:59" }
-              ]
-            }
-          }
-        },
-        {
-          "name": "Get Support Ticket by ID",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{base_url}}/api/v3/support/tickets/{{ticket_id}}",
-              "host": [
-                "{{base_url}}"
-              ],
-              "path": [
-                "api",
-                "v3",
-                "support",
-                "tickets",
-                "{{ticket_id}}"
-              ]
-            }
-          }
-        }
-      ]
-    },
-    {
       "name": "Accounting",
       "item": [
         {
@@ -370,11 +379,26 @@
                 "journal-entries"
               ],
               "query": [
-                { "key": "page", "value": "1" },
-                { "key": "per_page", "value": "20" },
-                { "key": "organization_code", "value": "{{organization_code}}" },
-                { "key": "updated_from", "value": "2026-01-01 00:00:00" },
-                { "key": "updated_to", "value": "2026-12-31 23:59:59" }
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "per_page",
+                  "value": "20"
+                },
+                {
+                  "key": "organization_code",
+                  "value": "{{organization_code}}"
+                },
+                {
+                  "key": "updated_from",
+                  "value": "2026-01-01 00:00:00"
+                },
+                {
+                  "key": "updated_to",
+                  "value": "2026-12-31 23:59:59"
+                }
               ]
             }
           }
@@ -403,16 +427,49 @@
     }
   ],
   "variable": [
-    { "key": "base_url", "value": "https://herbal-simbiz-ben.happydev.simitgroup.com" },
-    { "key": "uid", "value": "support" },
-    { "key": "secret", "value": "" },
-    { "key": "organization_code", "value": "BHH" },
-    { "key": "token", "value": "" },
-    { "key": "bpartner_id", "value": "1-1-1" },
-    { "key": "item_id", "value": "1-1-1001" },
-    { "key": "sales_order_id", "value": "1-1-8001" },
-    { "key": "purchase_invoice_id", "value": "1-1-9001" },
-    { "key": "ticket_id", "value": "1-1-7001" },
-    { "key": "journal_entry_id", "value": "1-1-6001" }
+    {
+      "key": "base_url",
+      "value": "https://herbal-simbiz-ben.happydev.simitgroup.com"
+    },
+    {
+      "key": "uid",
+      "value": "support"
+    },
+    {
+      "key": "secret",
+      "value": ""
+    },
+    {
+      "key": "organization_code",
+      "value": "BHH"
+    },
+    {
+      "key": "token",
+      "value": ""
+    },
+    {
+      "key": "bpartner_id",
+      "value": "1-1-1"
+    },
+    {
+      "key": "item_id",
+      "value": "1-1-1001"
+    },
+    {
+      "key": "sales_order_id",
+      "value": "1-1-8001"
+    },
+    {
+      "key": "purchase_invoice_id",
+      "value": "1-1-9001"
+    },
+    {
+      "key": "ticket_id",
+      "value": "1-1-7001"
+    },
+    {
+      "key": "journal_entry_id",
+      "value": "1-1-6001"
+    }
   ]
 }
