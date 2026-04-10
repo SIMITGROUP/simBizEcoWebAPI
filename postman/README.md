@@ -17,3 +17,4 @@
 - Collection auto-adds `x-uid` from `{{uid}}` in pre-request script.
 - `Get Token` test script stores token to environment variable `token` automatically.
 - All list/document requests include sample `updated_from` and `updated_to` filters.
+- Collection only includes endpoints shown in current API Usage wiki scope (excluded/hidden wiki endpoints are not included).
