@@ -1,0 +1,418 @@
+{
+  "info": {
+    "_postman_id": "2a63b4ce-63dc-4f72-a097-3d65f7441f00",
+    "name": "SimBiz 6 API V3",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "SimBiz 6 API V3 collection for quick third-party integration testing."
+  },
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{token}}",
+        "type": "string"
+      }
+    ]
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          "pm.request.headers.upsert({ key: 'x-uid', value: pm.variables.get('uid') });"
+        ]
+      }
+    }
+  ],
+  "item": [
+    {
+      "name": "Auth and System",
+      "item": [
+        {
+          "name": "Get Token",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "let body = {};",
+                  "try { body = pm.response.json(); } catch (e) {}",
+                  "if (body && body.status === 'OK' && body.data && body.data.token) {",
+                  "  pm.environment.set('token', body.data.token);",
+                  "}",
+                  "pm.test('Token API returns status OK', function () {",
+                  "  pm.expect(body.status).to.eql('OK');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"uid\": \"{{uid}}\",\n  \"secret\": \"{{secret}}\",\n  \"organization_code\": \"{{organization_code}}\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v3/token",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "token"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Health Check",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/v3/health",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "health"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Business Partner",
+      "item": [
+        {
+          "name": "List Business Partners",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/v3/business-partners?page=1&per_page=20&organization_code={{organization_code}}&updated_from=2026-01-01 00:00:00&updated_to=2026-12-31 23:59:59",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "business-partners"
+              ],
+              "query": [
+                { "key": "page", "value": "1" },
+                { "key": "per_page", "value": "20" },
+                { "key": "organization_code", "value": "{{organization_code}}" },
+                { "key": "updated_from", "value": "2026-01-01 00:00:00" },
+                { "key": "updated_to", "value": "2026-12-31 23:59:59" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Business Partner by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/v3/business-partners/{{bpartner_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "business-partners",
+                "{{bpartner_id}}"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Inventory",
+      "item": [
+        {
+          "name": "List Items",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/v3/inventory/items?page=1&per_page=20&organization_code={{organization_code}}&updated_from=2026-01-01 00:00:00&updated_to=2026-12-31 23:59:59",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "inventory",
+                "items"
+              ],
+              "query": [
+                { "key": "page", "value": "1" },
+                { "key": "per_page", "value": "20" },
+                { "key": "organization_code", "value": "{{organization_code}}" },
+                { "key": "updated_from", "value": "2026-01-01 00:00:00" },
+                { "key": "updated_to", "value": "2026-12-31 23:59:59" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Item by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/v3/inventory/items/{{item_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "inventory",
+                "items",
+                "{{item_id}}"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Sales",
+      "item": [
+        {
+          "name": "List Sales Orders",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/v3/sales-orders?page=1&per_page=20&organization_code={{organization_code}}&updated_from=2026-01-01 00:00:00&updated_to=2026-12-31 23:59:59",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "sales-orders"
+              ],
+              "query": [
+                { "key": "page", "value": "1" },
+                { "key": "per_page", "value": "20" },
+                { "key": "organization_code", "value": "{{organization_code}}" },
+                { "key": "updated_from", "value": "2026-01-01 00:00:00" },
+                { "key": "updated_to", "value": "2026-12-31 23:59:59" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Sales Order by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/v3/sales-orders/{{sales_order_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "sales-orders",
+                "{{sales_order_id}}"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Purchase",
+      "item": [
+        {
+          "name": "List Purchase Invoices",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/v3/purchase-invoices?page=1&per_page=20&organization_code={{organization_code}}&updated_from=2026-01-01 00:00:00&updated_to=2026-12-31 23:59:59",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "purchase-invoices"
+              ],
+              "query": [
+                { "key": "page", "value": "1" },
+                { "key": "per_page", "value": "20" },
+                { "key": "organization_code", "value": "{{organization_code}}" },
+                { "key": "updated_from", "value": "2026-01-01 00:00:00" },
+                { "key": "updated_to", "value": "2026-12-31 23:59:59" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Purchase Invoice by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/v3/purchase-invoices/{{purchase_invoice_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "purchase-invoices",
+                "{{purchase_invoice_id}}"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Customer Service",
+      "item": [
+        {
+          "name": "List Support Tickets",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/v3/support/tickets?page=1&per_page=20&organization_code={{organization_code}}&updated_from=2026-01-01 00:00:00&updated_to=2026-12-31 23:59:59",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "support",
+                "tickets"
+              ],
+              "query": [
+                { "key": "page", "value": "1" },
+                { "key": "per_page", "value": "20" },
+                { "key": "organization_code", "value": "{{organization_code}}" },
+                { "key": "updated_from", "value": "2026-01-01 00:00:00" },
+                { "key": "updated_to", "value": "2026-12-31 23:59:59" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Support Ticket by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/v3/support/tickets/{{ticket_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "support",
+                "tickets",
+                "{{ticket_id}}"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Accounting",
+      "item": [
+        {
+          "name": "List Journal Entries",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/v3/accounting/journal-entries?page=1&per_page=20&organization_code={{organization_code}}&updated_from=2026-01-01 00:00:00&updated_to=2026-12-31 23:59:59",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "accounting",
+                "journal-entries"
+              ],
+              "query": [
+                { "key": "page", "value": "1" },
+                { "key": "per_page", "value": "20" },
+                { "key": "organization_code", "value": "{{organization_code}}" },
+                { "key": "updated_from", "value": "2026-01-01 00:00:00" },
+                { "key": "updated_to", "value": "2026-12-31 23:59:59" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Journal Entry by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/v3/accounting/journal-entries/{{journal_entry_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "accounting",
+                "journal-entries",
+                "{{journal_entry_id}}"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    { "key": "base_url", "value": "https://herbal-simbiz-ben.happydev.simitgroup.com" },
+    { "key": "uid", "value": "support" },
+    { "key": "secret", "value": "" },
+    { "key": "organization_code", "value": "BHH" },
+    { "key": "token", "value": "" },
+    { "key": "bpartner_id", "value": "1-1-1" },
+    { "key": "item_id", "value": "1-1-1001" },
+    { "key": "sales_order_id", "value": "1-1-8001" },
+    { "key": "purchase_invoice_id", "value": "1-1-9001" },
+    { "key": "ticket_id", "value": "1-1-7001" },
+    { "key": "journal_entry_id", "value": "1-1-6001" }
+  ]
+}
